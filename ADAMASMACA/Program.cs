@@ -1,16 +1,18 @@
-﻿using System;
+using System;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // Kelimeleri bir dizi içinde tanımlayın
+    
         string[] kelimeler = { "elma", "armut", "muz", "portakal", "çilek", "üzüm" };
+     ;
 
         // Rastgele bir kelime seçin
         Random random = new Random();
         int index = random.Next(kelimeler.Length);
         string kelime = kelimeler[index];
+        int puan;
 
         // Kelimenin uzunluğunu hesaplayın ve bir tahmin dizisi oluşturun
         int uzunluk = kelime.Length;
@@ -18,10 +20,12 @@ class Program
         for (int i = 0; i < uzunluk; i++)
         {
             tahmin[i] = '_';
+           
         }
+         puan = uzunluk * 100;
 
         // Kullanıcının tahmin hakkını belirleyin ve bir tahmin dizisi oluşturun
-        int tahminHakki = 15;
+        int tahminHakki = 6;
         char[] kullaniciTahmin = new char[uzunluk];
 
         // Oyun döngüsünü başlatın
@@ -49,6 +53,7 @@ class Program
             if (!dogruTahmin)
             {
                 tahminHakki--;
+                puan = puan-(puan*100)/10;
             }
 
             // Kullanıcının tüm karakterleri doğru tahmin ettiğini kontrol edin
@@ -66,6 +71,7 @@ class Program
             if (tamamlandi)
             {
                 Console.WriteLine("Tebrikler, kelimeyi doğru tahmin ettiniz: " + kelime);
+                Console.WriteLine("Aldığınız puan= " + puan);
                 break;
             }
 
